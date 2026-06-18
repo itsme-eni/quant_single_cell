@@ -1,25 +1,13 @@
-# Single-Cell Data Analysis Portfolio Project
+# Single-Cell Data Analysis Project
 
-This repository contains three end-to-end data analysis practicals focused on single-cell biology:
+This repository contains four end-to-end data analysis practicals focused on single-cell biology:
 
 - Plate reader growth dynamics
 - Flow cytometry induction analysis
 - Live-cell imaging time-series analysis
+- smFISH image-based quantification and visualization
 
-The project is designed as both:
-
-1. A biological data analysis study
-2. A portfolio-ready demonstration of data analyst skills (data cleaning, transformation, exploratory analysis, visualization, interpretation, and reporting)
-
-## Why This Project Matters for a Data Analyst Role
-
-Although this dataset comes from biology, the workflow mirrors real analyst work in many industries:
-
-- Converting messy raw files into analysis-ready tables
-- Defining consistent metrics and KPIs (growth rate, lag phase, induction shift, fluorescence change)
-- Comparing cohorts/segments (strains, transitions, conditions)
-- Building visual narratives for decision-making
-- Translating quantitative outputs into clear conclusions
+The notebooks follow a full analysis workflow: loading raw data, cleaning and transforming it, extracting features, comparing conditions, and summarizing results with clear plots and interpretations.
 
 ## Repository Structure
 
@@ -32,8 +20,11 @@ Although this dataset comes from biology, the workflow mirrors real analyst work
 - `3_practical_Live_Cell_Imaging2025/`
   - Time-lapse single-cell trajectory analysis
   - Population- and cell-level fluorescence/morphology trends
+- `4_practical_smFISH2025/`
+  - Spot-level transcript quantification in CY3 and CY5 channels
+  - Cleanup, condition parsing, and comparative visualizations for smFISH datasets
 
-## Core Analyst Skills Demonstrated
+## Analysis Skills Demonstrated
 
 - Data Wrangling
   - Parsing structured filenames into metadata
@@ -104,21 +95,28 @@ Open notebooks in VS Code or Jupyter and run cells top-to-bottom:
 - `1_practical_Platereader_Growth2025/01 Growth experiments.ipynb`
 - `2_practical_Flow cytometry2025/01 Flow cytometry.ipynb`
 - `3_practical_Live_Cell_Imaging2025/01 timelapse_microscopy.ipynb`
+- `4_practical_smFISH2025/napari_practical/notebooks/01 data plotting.ipynb`
+- `4_practical_smFISH2025/napari_practical/notebooks/02 data cleanup.ipynb`
+- `4_practical_smFISH2025/napari_practical/notebooks/03 smFISH data visualisation.ipynb`
+
+### 5) Note on smFISH files
+
+The smFISH plotting notebook expects intermediate pickle outputs generated from the napari practical:
+
+- `cy3_spots.pkl`
+- `cy5_spots.pkl`
+- `segmentation.pkl`
+
+Place these files in:
+
+- `4_practical_smFISH2025/napari_practical/`
 
 ## Selected Insights (Examples)
 
 - Plate reader: transitions ending in glucose showed higher growth rates and shorter lag phases than glucose-to-alternative-carbon transitions.
 - Flow cytometry: strongest induction signal was observed in RAF->GAL conditions for GAL-reporter strains, while early GLU->GAL response was weaker.
 - Live imaging: raffinose-preconditioned cells showed stronger fluorescence increase than glucose-preconditioned cells over matched time windows.
-
-## Analyst-Focused Framing for Recruiters
-
-If you are reviewing this project from a hiring perspective, key strengths are:
-
-- Ability to take raw, high-volume data and produce interpretable outputs
-- Strong comparative analysis across cohorts and time
-- Clear documentation of assumptions and hypothesis testing
-- Communication of technical results in concise business-friendly language
+- smFISH: transcript-count distributions differ by condition and channel, and the cleanup/visualization pipeline supports direct condition-level comparisons.
 
 ## Next Improvements (Planned)
 
@@ -126,6 +124,10 @@ If you are reviewing this project from a hiring perspective, key strengths are:
 - Add summary dashboards (for example Plotly/Power BI style exports)
 - Add lightweight automated checks for data integrity and schema consistency
 - Add a short case-study style report with problem statement, KPI definitions, and executive summary
+
+## Data Note
+
+Large raw microscopy TIFF files are not tracked in git to keep the repository lightweight and push-safe. The repository includes practical notebooks, processed outputs, and example data needed to reproduce the analysis workflow.
 
 ## License
 
